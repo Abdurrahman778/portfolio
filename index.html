@@ -24,7 +24,38 @@
         }
 
         body {
-            overflow-x : none;
+            overflow-x: hidden;
+        }
+
+        .video-card {
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .video-card .play-overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-card:hover .play-overlay {
+            opacity: 1;
+        }
+
+        .video-modal {
+            backdrop-filter: blur(8px);
+        }
+
+        .video-modal.open {
+            display: flex;
+        }
+
+        body.modal-open {
+            overflow: hidden;
         }
     </style>
 </head>
@@ -230,108 +261,199 @@
 
     </section>
 
-    <section class="py-10 md:py-16">
+    <section id="video-editing" class="py-10 md:py-16">
 
         <div class="container max-w-screen-xl mx-auto px-4">
 
-            <h1 class="font-medium text-gray-700 text-3xl md:text-4xl mb-5">Other Things</h1>
+            <h1 class="font-medium text-gray-700 text-3xl md:text-4xl mb-5" data-aos="fade-up">Video Editing</h1>
 
-            <p class="font-normal text-gray-500 text-xs md:text-base mb-10">Sometimes i made an motion graphic video
+            <p class="font-normal text-gray-500 text-xs md:text-base mb-10" data-aos="fade-up">Sometimes i made an motion graphic video
                 using my phone, here are some the result
             </p>
 
-            <!-- Section Card with Video - Autoplay -->
-            <section class="max-w-6xl mx-auto py-12 px-6">
-                <!-- Grid Layout -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Card 1 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden" data-aos="flip-up">
-                        <!-- Video -->
-                        <video class="w-full h-56 object-cover" autoplay muted loop>
-                            <source src="assets/video/video1.gif" type="video/gif">
-                            Your browser does not support the video tag.
-                        </video>
-                        <!-- Card Content -->
-                        <div class="p-6">
-                            <p class="mt-4 text-gray-500">Alight Motion - <span class="text-blue-500">March-7
-                                    Mograph</span></p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <div class="video-card bg-white rounded-lg shadow-lg overflow-hidden"
+                    data-aos="flip-up" data-video-src="assets/video/video-1.mp4" data-video-type="mp4"
+                    data-video-title="Video Editing 1">
+                    <div class="relative w-full h-56 bg-gray-100 overflow-hidden">
+                        <img class="lazy-preview w-full h-full object-cover" data-src="assets/video/video1.gif" alt="Video Editing 1 preview" loading="lazy">
+                        <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/30">
+                            <div class="w-14 h-14 flex items-center justify-center rounded-full bg-gray-700/90 text-white">
+                                <i data-feather="play" class="w-6 h-6 ml-1"></i>
+                            </div>
                         </div>
                     </div>
-
-                    <!-- Card 2 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden" data-aos="flip-up" data-aos-delay="100">
-                        <!-- Video -->
-                        <video class="w-full h-56 object-cover" autoplay muted loop>
-                            <source src="assets/video/video2.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <!-- Card Content -->
-                        <div class="p-6">
-                            <p class="mt-4 text-gray-500">Alight Motion - <span class="text-blue-500">One Dance</span>
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden" data-aos="flip-up" data-aos-delay="200">
-                        <!-- Video -->
-                        <video class="w-full h-56 object-cover" autoplay muted loop>
-                            <source src="assets/video/video3.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <!-- Card Content -->
-                        <div class="p-6">
-                            <p class="mt-4 text-gray-500">Alight Motion - <span class="text-blue-500">Supido Motion
-                                    Graphic</span></p>
-                        </div>
-                    </div>
-
-                    <!-- Card 4 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden" data-aos="flip-up" data-aos-delay="300">
-                        <!-- Video -->
-                        <video class="w-full h-56 object-cover" autoplay muted loop>
-                            <source src="assets/video/video4.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <!-- Card Content -->
-                        <div class="p-6">
-                            <p class="mt-4 text-gray-500">Alight Motion - <span class="text-blue-500">Snooze Hatsune
-                                    Miku</span></p>
-                        </div>
-                    </div>
-
-                    <!-- Card 5 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden" data-aos="flip-up" data-aos-delay="400">
-                        <!-- Video -->
-                        <video class="w-full h-56 object-cover" autoplay muted loop>
-                            <source src="assets/video/video5.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <!-- Card Content -->
-                        <div class="p-6">
-                            <p class="mt-4 text-gray-500">Alight Motion - <span
-                                    class="text-blue-500">Satisfiction</span></p>
-                        </div>
-                    </div>
-
-                    <!-- Card 6 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden" data-aos="flip-up" data-aos-delay="500">
-                        <!-- Video -->
-                        <video class="w-full h-56 object-cover" autoplay muted loop>
-                            <source src="assets/video/video7.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <!-- Card Content -->
-                        <div class="p-6">
-                            <p class="mt-4 text-gray-500">Alight Motion - <span class="text-blue-500">Jedag Jedug
-                                    Typography</span></p>
-                        </div>
+                    <div class="p-6">
+                        <p class="text-gray-500">Alight Motion - <span class="text-blue-500">Video Editing 1</span></p>
                     </div>
                 </div>
-            </section>
+
+                <div class="video-card bg-white rounded-lg shadow-lg overflow-hidden"
+                    data-aos="flip-up" data-aos-delay="100" data-video-src="assets/video/video2.mp4" data-video-type="mp4"
+                    data-video-title="Video Editing 2">
+                    <div class="relative w-full h-56 bg-gray-100 overflow-hidden">
+                        <video class="lazy-preview w-full h-full object-cover" muted loop playsinline preload="none" data-src="assets/video/video2.mp4"></video>
+                        <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/30">
+                            <div class="w-14 h-14 flex items-center justify-center rounded-full bg-gray-700/90 text-white">
+                                <i data-feather="play" class="w-6 h-6 ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-500">Alight Motion - <span class="text-blue-500">Video Editing 2</span></p>
+                    </div>
+                </div>
+
+                <div class="video-card bg-white rounded-lg shadow-lg overflow-hidden"
+                    data-aos="flip-up" data-aos-delay="200" data-video-src="assets/video/video3.mp4" data-video-type="mp4"
+                    data-video-title="Video Editing 3">
+                    <div class="relative w-full h-56 bg-gray-100 overflow-hidden">
+                        <video class="lazy-preview w-full h-full object-cover" muted loop playsinline preload="none" data-src="assets/video/video3.mp4"></video>
+                        <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/30">
+                            <div class="w-14 h-14 flex items-center justify-center rounded-full bg-gray-700/90 text-white">
+                                <i data-feather="play" class="w-6 h-6 ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-500">Alight Motion - <span class="text-blue-500">Video Editing 3</span></p>
+                    </div>
+                </div>
+
+                <div class="video-card bg-white rounded-lg shadow-lg overflow-hidden"
+                    data-aos="flip-up" data-aos-delay="300" data-video-src="assets/video/video4.mp4" data-video-type="mp4"
+                    data-video-title="Video Editing 4">
+                    <div class="relative w-full h-56 bg-gray-100 overflow-hidden">
+                        <video class="lazy-preview w-full h-full object-cover" muted loop playsinline preload="none" data-src="assets/video/video4.mp4"></video>
+                        <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/30">
+                            <div class="w-14 h-14 flex items-center justify-center rounded-full bg-gray-700/90 text-white">
+                                <i data-feather="play" class="w-6 h-6 ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-500">Commission - <span class="text-blue-500">Video Editing 4</span></p>
+                    </div>
+                </div>
+
+                <div class="video-card bg-white rounded-lg shadow-lg overflow-hidden"
+                    data-aos="flip-up" data-aos-delay="400" data-video-src="assets/video/video5.mp4" data-video-type="mp4"
+                    data-video-title="Video Editing 5">
+                    <div class="relative w-full h-56 bg-gray-100 overflow-hidden">
+                        <video class="lazy-preview w-full h-full object-cover" muted loop playsinline preload="none" data-src="assets/video/video5.mp4"></video>
+                        <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/30">
+                            <div class="w-14 h-14 flex items-center justify-center rounded-full bg-gray-700/90 text-white">
+                                <i data-feather="play" class="w-6 h-6 ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-500">Alight Motion - <span class="text-blue-500">Video Editing 5</span></p>
+                    </div>
+                </div>
+
+                <div class="video-card bg-white rounded-lg shadow-lg overflow-hidden"
+                    data-aos="flip-up" data-aos-delay="500" data-video-src="assets/video/video6.mp4" data-video-type="mp4"
+                    data-video-title="Video Editing 6">
+                    <div class="relative w-full h-56 bg-gray-100 overflow-hidden">
+                        <video class="lazy-preview w-full h-full object-cover" muted loop playsinline preload="none" data-src="assets/video/video6.mp4"></video>
+                        <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/30">
+                            <div class="w-14 h-14 flex items-center justify-center rounded-full bg-gray-700/90 text-white">
+                                <i data-feather="play" class="w-6 h-6 ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-500">Alight Motion - <span class="text-blue-500">Video Editing 6</span></p>
+                    </div>
+                </div>
+
+                <!-- <div class="video-card bg-white rounded-lg shadow-lg overflow-hidden"
+                    data-aos="flip-up" data-aos-delay="600" data-video-src="assets/video/video7.mp4" data-video-type="mp4"
+                    data-video-title="Video Editing 7">
+                    <div class="relative w-full h-56 bg-gray-100 overflow-hidden">
+                        <video class="lazy-preview w-full h-full object-cover" muted loop playsinline preload="none" data-src="assets/video/video7.mp4"></video>
+                        <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/30">
+                            <div class="w-14 h-14 flex items-center justify-center rounded-full bg-gray-700/90 text-white">
+                                <i data-feather="play" class="w-6 h-6 ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-500">Alight Motion - <span class="text-blue-500">Video Editing 7</span></p>
+                    </div>
+                </div> -->
+
+                <div class="video-card bg-white rounded-lg shadow-lg overflow-hidden"
+                    data-aos="flip-up" data-aos-delay="700" data-video-src="assets/video/video-8.mp4" data-video-type="mp4"
+                    data-video-title="Video Editing 8">
+                    <div class="relative w-full h-56 bg-gray-100 overflow-hidden">
+                        <video class="lazy-preview w-full h-full object-cover" muted loop playsinline preload="none" data-src="assets/video/video-8.mp4"></video>
+                        <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/30">
+                            <div class="w-14 h-14 flex items-center justify-center rounded-full bg-gray-700/90 text-white">
+                                <i data-feather="play" class="w-6 h-6 ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-500">Alight Motion - <span class="text-blue-500">Video Editing 8</span></p>
+                    </div>
+                </div>
+
+                <div class="video-card bg-white rounded-lg shadow-lg overflow-hidden"
+                    data-aos="flip-up" data-aos-delay="800" data-video-src="assets/video/video-9.mp4" data-video-type="mp4"
+                    data-video-title="Video Editing 9">
+                    <div class="relative w-full h-56 bg-gray-100 overflow-hidden">
+                        <video class="lazy-preview w-full h-full object-cover" muted loop playsinline preload="none" data-src="assets/video/video-9.mp4"></video>
+                        <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/30">
+                            <div class="w-14 h-14 flex items-center justify-center rounded-full bg-gray-700/90 text-white">
+                                <i data-feather="play" class="w-6 h-6 ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-500">Alight Motion - <span class="text-blue-500">Video Editing 9</span></p>
+                    </div>
+                </div>
+
+                <div class="video-card bg-white rounded-lg shadow-lg overflow-hidden"
+                    data-aos="flip-up" data-aos-delay="900" data-video-src="assets/video/video-10.mp4" data-video-type="mp4"
+                    data-video-title="Video Editing 10">
+                    <div class="relative w-full h-56 bg-gray-100 overflow-hidden">
+                        <video class="lazy-preview w-full h-full object-cover" muted loop playsinline preload="none" data-src="assets/video/video-10.mp4"></video>
+                        <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/30">
+                            <div class="w-14 h-14 flex items-center justify-center rounded-full bg-gray-700/90 text-white">
+                                <i data-feather="play" class="w-6 h-6 ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-500">Commission - <span class="text-blue-500">Video Editing 10</span></p>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
     </section>
+
+    <!-- Video Modal -->
+    <div id="video-modal" class="video-modal fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="relative w-full max-w-4xl bg-white rounded-lg overflow-hidden shadow-2xl">
+            <button id="modal-close" class="absolute top-3 right-3 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-gray-700/80 text-white hover:bg-gray-800 transition-colors" aria-label="Close video">
+                <i data-feather="x" class="w-5 h-5"></i>
+            </button>
+            <div class="aspect-video bg-black">
+                <video id="modal-video" class="w-full h-full" controls playsinline></video>
+                <img id="modal-gif" class="w-full h-full object-contain hidden" alt="">
+            </div>
+            <div class="px-6 py-4 border-t border-gray-200">
+                <p id="modal-title" class="text-gray-700 font-medium text-lg"></p>
+                <p class="text-gray-500 text-sm mt-1">Alight Motion</p>
+            </div>
+        </div>
+    </div>
 
     <section class="py-10">
         <div class="container max-w-screen-xl mx-auto px-4">
@@ -465,6 +587,81 @@
     <script>
         feather.replace();
         AOS.init();
+
+        const videoModal = document.getElementById('video-modal');
+        const modalVideo = document.getElementById('modal-video');
+        const modalGif = document.getElementById('modal-gif');
+        const modalTitle = document.getElementById('modal-title');
+        const modalClose = document.getElementById('modal-close');
+
+        function openVideoModal(src, type, title) {
+            modalTitle.textContent = title;
+
+            if (type === 'gif') {
+                modalVideo.classList.add('hidden');
+                modalGif.classList.remove('hidden');
+                modalGif.src = src;
+            } else {
+                modalGif.classList.add('hidden');
+                modalVideo.classList.remove('hidden');
+                modalVideo.src = src;
+                modalVideo.load();
+                modalVideo.play().catch(() => {});
+            }
+
+            videoModal.classList.remove('hidden');
+            videoModal.classList.add('open');
+            document.body.classList.add('modal-open');
+        }
+
+        function closeVideoModal() {
+            modalVideo.pause();
+            modalVideo.removeAttribute('src');
+            modalVideo.load();
+            modalGif.removeAttribute('src');
+            videoModal.classList.add('hidden');
+            videoModal.classList.remove('open');
+            document.body.classList.remove('modal-open');
+        }
+
+        document.querySelectorAll('.video-card').forEach(card => {
+            card.addEventListener('click', () => {
+                openVideoModal(
+                    card.dataset.videoSrc,
+                    card.dataset.videoType,
+                    card.dataset.videoTitle
+                );
+            });
+        });
+
+        modalClose.addEventListener('click', closeVideoModal);
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) closeVideoModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && videoModal.classList.contains('open')) closeVideoModal();
+        });
+
+        const previewObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const el = entry.target;
+                const src = el.dataset.src;
+                if (!src || el.dataset.loaded) return;
+
+                if (el.tagName === 'IMG') {
+                    el.src = src;
+                } else if (el.tagName === 'VIDEO') {
+                    el.src = src;
+                    el.preload = 'metadata';
+                    el.play().catch(() => {});
+                }
+                el.dataset.loaded = 'true';
+                previewObserver.unobserve(el);
+            });
+        }, { rootMargin: '100px' });
+
+        document.querySelectorAll('.lazy-preview').forEach(el => previewObserver.observe(el));
     </script>
 
 </body>
